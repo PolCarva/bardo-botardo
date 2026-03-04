@@ -111,17 +111,45 @@ const tools = lesson.tools;
 
     <section class="mt-10">
       <h2 class="text-xl font-semibold">Ejercicio</h2>
-      <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
-        <p>
-          Entregable sugerido para esta clase: <strong>un cambio visible en la web</strong> + un README corto
-          de lo que aprendiste.
-        </p>
-        <ul class="mt-3 list-disc space-y-2 pl-5">
-          <li>Hacé 1 commit con mensaje claro.</li>
-          <li>Subilo a <code>main</code> (o PR si estás en equipo).</li>
-          <li>Anotá 1 duda y 1 aprendizaje.</li>
-        </ul>
-      </div>
+
+      {lesson.n === 1 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            En la Clase 1 <strong>no programamos</strong>. El objetivo es calibrar qué significa “crear valor” con vibecoding / IA.
+          </p>
+          <p class="mt-3">
+            <strong>Tu tarea:</strong> encontrá <strong>3 productos/startups</strong> que hayan creado valor usando IA en el producto
+            o usando herramientas de vibecoding para construir rápido.
+          </p>
+
+          <div class="mt-4 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-4">
+            <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>PLANTILLA (copiar/pegar)</div>
+            <ul class="mt-2 list-disc space-y-2 pl-5">
+              <li><strong>Nombre + link</strong></li>
+              <li><strong>Qué problema resuelve</strong> (1 frase)</li>
+              <li><strong>Qué parte es IA</strong> (feature concreta, no “marketing”)</li>
+              <li><strong>Qué valor crea</strong> (ahorra tiempo, reduce errores, mejora decisión, etc.)</li>
+              <li><strong>Qué podrías copiar</strong> como patrón para tu propio MVP</li>
+            </ul>
+          </div>
+
+          <p class="mt-4">
+            Bonus: si encontrás un caso local UY/AR, vale doble.
+          </p>
+        </div>
+      ) : (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            Entregable sugerido para esta clase: <strong>un cambio visible en la web</strong> + un README corto
+            de lo que aprendiste.
+          </p>
+          <ul class="mt-3 list-disc space-y-2 pl-5">
+            <li>Hacé 1 commit con mensaje claro.</li>
+            <li>Subilo a <code>main</code> (o PR si estás en equipo).</li>
+            <li>Anotá 1 duda y 1 aprendizaje.</li>
+          </ul>
+        </div>
+      )}
     </section>
 
     <section class="mt-10">
