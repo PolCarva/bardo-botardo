@@ -22,6 +22,16 @@ const tools = lesson.tools;
     <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">{lesson.title}</h1>
     <p class="mt-4 text-white/75">Resultado esperado: <strong>{lesson.outcome}</strong></p>
 
+    <div class="mt-6 rounded-[2rem] border border-white/10 bg-white/5 p-4">
+      <div class="flex items-center justify-between text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+        <span>PROGRESO</span>
+        <span>{lesson.n}/{lessons.length}</span>
+      </div>
+      <div class="mt-2 h-2 rounded-full bg-white/10 overflow-hidden">
+        <div class="h-full rounded-full" style={{ width: `${(lesson.n / lessons.length) * 100}%`, background: 'var(--champagne)' }} />
+      </div>
+    </div>
+
     <div class="mt-6 rounded-[2rem] border border-white/10 bg-white/5 p-5">
       <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>TOOLS</div>
       <div class="mt-2 flex flex-wrap gap-2">
