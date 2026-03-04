@@ -32,7 +32,7 @@ const tools = lesson.tools;
     </div>
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold">Agenda (guía)</h2>
+      <h2 class="text-xl font-semibold">Agenda <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(guía)</span></h2>
       <ol class="mt-3 list-decimal space-y-2 pl-5 text-white/75">
         <li>Contexto rápido (qué vamos a construir hoy y por qué).</li>
         <li>Demo corta (ejemplo real / mini-caso).</li>
@@ -46,8 +46,8 @@ const tools = lesson.tools;
         <h2 class="text-xl font-semibold">Lo que tenés que entender HOY (sin humo)</h2>
 
         <div class="mt-3 grid gap-4">
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
-            <h3 class="text-lg font-semibold">1) ¿Qué es un LLM?</h3>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">1) ¿Qué es un LLM? <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>en criollo</span></h3>
             <p class="mt-2 text-white/75">
               Un <strong>LLM</strong> (Large Language Model) es un modelo que predice el “próximo token”.
               No es una “mente” ni una “base de datos de verdad”: es un sistema de probabilidad entrenado
@@ -59,8 +59,8 @@ const tools = lesson.tools;
             </ul>
           </div>
 
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
-            <h3 class="text-lg font-semibold">2) Tokens: qué son y por qué importan</h3>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">2) Tokens <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>y costos</span></h3>
             <p class="mt-2 text-white/75">
               Los modelos no ven “palabras”: ven <strong>tokens</strong> (pedazos de texto). Se cobran por tokens
               de <strong>entrada</strong> (lo que vos mandás) y de <strong>salida</strong> (lo que el modelo genera).
@@ -71,8 +71,8 @@ const tools = lesson.tools;
             </ul>
           </div>
 
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
-            <h3 class="text-lg font-semibold">3) Cómo se cobra (muy simple)</h3>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">3) Pricing <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>sin llorar</span></h3>
             <p class="mt-2 text-white/75">
               Casi todos los providers cobran <strong>por uso</strong>. Regla práctica: la salida suele costar más que la entrada.
               Si tu app manda mucho contexto o genera respuestas largas, pagás más.
@@ -84,8 +84,8 @@ const tools = lesson.tools;
             </ul>
           </div>
 
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
-            <h3 class="text-lg font-semibold">4) Ejemplos reales (para calibrar el objetivo)</h3>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">4) Ejemplos reales <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>que crean valor</span></h3>
             <p class="mt-2 text-white/75">Productos con IA integrada (no solo “hechos con IA”):</p>
             <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
               <li><strong>Notion AI</strong> (escritura/sumarios dentro del producto): <a class="text-[color:var(--champagne)]" href="https://www.notion.so/product/ai" target="_blank" rel="noreferrer">notion.so/product/ai</a></li>
@@ -110,7 +110,7 @@ const tools = lesson.tools;
     )}
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold">Ejercicio</h2>
+      <h2 class="text-xl font-semibold">Ejercicio <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(hands-on)</span></h2>
 
       {lesson.n === 1 ? (
         <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
@@ -153,7 +153,7 @@ const tools = lesson.tools;
     </section>
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold">Recursos (curados)</h2>
+      <h2 class="text-xl font-semibold">Recursos <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(curados)</span></h2>
       <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
         <li>
           Google Developers: <a class="text-[color:var(--champagne)]" href="https://developers.google.com/" target="_blank" rel="noreferrer">developers.google.com</a>
