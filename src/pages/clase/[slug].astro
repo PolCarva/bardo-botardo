@@ -76,7 +76,7 @@ const tools = lesson.tools;
 
     <div class="mt-12 flex justify-between">
       <a class="rounded-[2rem] border border-white/10 bg-white/5 px-5 py-3 font-semibold" href="/plan">← Volver al plan</a>
-      <a class="rounded-[2rem] bg-[color:var(--champagne)] px-5 py-3 font-semibold text-[#0D0D12]" href={`/clase/${lessons[Math.min(lesson.n, lessons.length-1)].slug}`}>Siguiente →</a>
+      <a class="rounded-[2rem] bg-[color:var(--champagne)] px-5 py-3 font-semibold text-[#0D0D12]" href={`/clase/${(lessons.find((l) => l.n === Math.min(lesson.n + 1, lessons.length)) ?? lesson).slug}`}>Siguiente →</a>
     </div>
 
     <div class="mt-12 h-px bg-white/10" />

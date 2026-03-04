@@ -1,38 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { lessons } from '../lib/classes';
+import { modules } from '../lib/modules';
+
+const lessonByN = new Map(lessons.map((l) => [l.n, l]));
 ---
 
 <Layout title="Plan — Vibecoding 16">
   <section class="mx-auto max-w-6xl px-5 pt-12">
     <p class="text-xs tracking-[0.22em] text-white/60">PLAN</p>
     <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight">
-      16 clases, de 0 a pro.
+      16 clases, ordenadas por módulos.
     </h1>
     <p class="mt-4 max-w-2xl text-white/75">
-      Cada clase tiene objetivo, herramientas y un entregable. La idea es terminar con una web
-      deployada y con IA integrada.
+      HTML/CSS/JS primero. IA después (como feature). Backend opcional: Node + Express.
     </p>
 
-    <div class="mt-8 grid gap-4">
-      {lessons.map((l) => (
-        <a
-          href={`/clase/${l.slug}`}
-          class="group rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]"
-        >
-          <div class="flex items-start justify-between gap-4">
+    <div class="mt-10 grid gap-4">
+      {modules.map((m) => (
+        <div class="rounded-[2.5rem] border border-white/10 bg-white/5 p-6">
+          <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
               <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                CLASE {String(l.n).padStart(2, '0')}
+                {m.id.toUpperCase()} · {m.lessons.length} clases
               </div>
-              <div class="mt-2 text-lg font-semibold">{l.title}</div>
-              <div class="mt-2 text-sm text-white/70">{l.outcome}</div>
+              <div class="mt-2 text-2xl font-semibold tracking-tight">{m.title}</div>
+              <div class="mt-2 text-white/70">{m.subtitle}</div>
             </div>
-            <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-              {l.tools.join(' · ')}
+            <div class="rounded-[2rem] border border-white/10 bg-[#0D0D12]/40 px-4 py-3 text-xs text-white/70" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              Entrega por módulo: 1 artefacto usable
             </div>
           </div>
-        </a>
+
+          <div class="mt-6 grid gap-3">
+            {m.lessons.map((n) => {
+              const l = lessonByN.get(n);
+              if (!l) return null;
+              return (
+                <a
+                  href={`/clase/${l.slug}`}
+                  class="group rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5 transition hover:-translate-y-[1px]"
+                >
+                  <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                        CLASE {String(l.n).padStart(2, '0')}
+                      </div>
+                      <div class="mt-2 text-lg font-semibold">{l.title}</div>
+                      <div class="mt-2 text-sm text-white/70">{l.outcome}</div>
+                    </div>
+                    <div class="text-xs text-white/55" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                      {l.tools.join(' · ')}
+                    </div>
+                  </div>
+                  <div class="mt-4 text-sm text-[color:var(--champagne)] font-semibold">
+                    Abrir clase →
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
       ))}
     </div>
   </section>
