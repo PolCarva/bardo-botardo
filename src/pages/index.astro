@@ -1,8 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CinematicLanding from '../components/CinematicLanding';
 ---
 
-<Layout title="Bardo 🧉 — Pedidos por WhatsApp">
-  <CinematicLanding client:load />
+<Layout title="Vibecoding — 16 clases (0→pro)">
+  <section class="mx-auto max-w-6xl px-5 pt-14">
+    <p class="text-xs tracking-[0.22em] text-white/60">CURSO</p>
+    <h1 class="mt-3 text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">
+      Vibecoding: <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>de 0 a pro</span>
+      <br />en 16 clases.
+    </h1>
+    <p class="mt-5 max-w-2xl text-white/75">
+      Para gente que no sabe JavaScript. Aprendés construyendo una web moderna con diseño,
+      buenas prácticas y features con IA (Google Labs / Gemini / etc.).
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a class="rounded-[2rem] bg-[color:var(--champagne)] px-5 py-3 font-semibold text-[#0D0D12]" href="/plan">
+        Ver plan completo
+      </a>
+      <a class="rounded-[2rem] border border-white/10 bg-white/5 px-5 py-3 font-semibold" href="/recursos">
+        Recursos + herramientas
+      </a>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+        <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>FOCO</div>
+        <div class="mt-2 font-semibold">Aprender haciendo</div>
+        <p class="mt-2 text-sm text-white/70">Cada clase produce un artefacto: página, componente, deploy o feature.</p>
+      </div>
+      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+        <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>DISEÑO</div>
+        <div class="mt-2 font-semibold">No más UI fea</div>
+        <p class="mt-2 text-sm text-white/70">Sistema de diseño simple + Google Stitch + ejemplos reales.</p>
+      </div>
+      <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+        <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>IA</div>
+        <div class="mt-2 font-semibold">Integración real</div>
+        <p class="mt-2 text-sm text-white/70">Webs que usan IA como feature, no como “generador de HTML”.</p>
+      </div>
+    </div>
+  </section>
 </Layout>

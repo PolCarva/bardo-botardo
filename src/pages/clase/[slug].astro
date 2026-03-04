@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { lessons } from '../../lib/classes';
+
+export function getStaticPaths() {
+  return lessons.map((l) => ({ params: { slug: l.slug } }));
+}
+
+const { slug } = Astro.params;
+const lesson = lessons.find((l) => l.slug === slug);
+
+if (!lesson) {
+  return Astro.redirect('/plan');
+}
+
+const tools = lesson.tools;
+---
+
+<Layout title={`Clase ${String(lesson.n).padStart(2,'0')} — ${lesson.title}`}>
+  <article class="mx-auto max-w-3xl px-5 pt-12">
+    <div class="text-xs tracking-[0.22em] text-white/60">CLASE {String(lesson.n).padStart(2,'0')}</div>
+    <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">{lesson.title}</h1>
+    <p class="mt-4 text-white/75">Resultado esperado: <strong>{lesson.outcome}</strong></p>
+
+    <div class="mt-6 rounded-[2rem] border border-white/10 bg-white/5 p-5">
+      <div class="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>TOOLS</div>
+      <div class="mt-2 flex flex-wrap gap-2">
+        {tools.map((t) => (
+          <span class="rounded-[2rem] border border-white/10 bg-[#0D0D12]/40 px-3 py-2 text-sm">{t}</span>
+        ))}
+      </div>
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold">Agenda (guía)</h2>
+      <ol class="mt-3 list-decimal space-y-2 pl-5 text-white/75">
+        <li>Contexto rápido (qué vamos a construir hoy y por qué).</li>
+        <li>Demo corta (ejemplo real / mini-caso).</li>
+        <li>Manos a la obra (paso a paso).</li>
+        <li>Entrega: commit + checklist + mini retro.</li>
+      </ol>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold">Ejercicio</h2>
+      <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+        <p>
+          Entregable sugerido para esta clase: <strong>un cambio visible en la web</strong> + un README corto
+          de lo que aprendiste.
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>Hacé 1 commit con mensaje claro.</li>
+          <li>Subilo a <code>main</code> (o PR si estás en equipo).</li>
+          <li>Anotá 1 duda y 1 aprendizaje.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold">Recursos (curados)</h2>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+        <li>
+          Google Developers: <a class="text-[color:var(--champagne)]" href="https://developers.google.com/" target="_blank" rel="noreferrer">developers.google.com</a>
+        </li>
+        <li>
+          Google AI Studio / Gemini: <a class="text-[color:var(--champagne)]" href="https://aistudio.google.com/" target="_blank" rel="noreferrer">aistudio.google.com</a>
+        </li>
+        <li>
+          Google Labs: <a class="text-[color:var(--champagne)]" href="https://labs.google/" target="_blank" rel="noreferrer">labs.google</a>
+        </li>
+      </ul>
+      <p class="mt-3 text-xs text-white/55" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+        Nota: en clases 8–16 vamos a meter Stitch/Labs/IA con ejemplos concretos.
+      </p>
+    </section>
+
+    <div class="mt-12 flex justify-between">
+      <a class="rounded-[2rem] border border-white/10 bg-white/5 px-5 py-3 font-semibold" href="/plan">← Volver al plan</a>
+      <a class="rounded-[2rem] bg-[color:var(--champagne)] px-5 py-3 font-semibold text-[#0D0D12]" href={`/clase/${lessons[Math.min(lesson.n, lessons.length-1)].slug}`}>Siguiente →</a>
+    </div>
+
+    <div class="mt-12 h-px bg-white/10" />
+
+    <p class="mt-6 text-sm text-white/60">
+      Si querés que esto sea más práctico, podemos agregar para cada clase: video corto, checklist, y ejemplos de prompts.
+    </p>
+  </article>
+</Layout>
