@@ -37,7 +37,7 @@ function DiagnosticShuffler() {
   const labels = useMemo(
     () => [
       'Idea → MVP en 2 horas',
-      'Copy que vende (sin humo)',
+      'Diseño que conecta con el usuario',
       'Feature IA que crea valor',
     ],
     []
@@ -59,24 +59,25 @@ function DiagnosticShuffler() {
   }, []);
 
   return (
-    <div className="relative h-44">
+    <div className="relative h-32">
       {stack.slice(0, 3).map((t, i) => (
         <div
           key={t}
           className={cn(
-            'absolute left-0 right-0 rounded-[1.4rem] border border-white/10 bg-[#0D0D12]/55 p-4',
+            'absolute left-0 right-0 rounded-[1.4rem] border border-white/10 p-4',
             'shadow-[0_18px_50px_rgba(0,0,0,.45)]'
           )}
           style={{
             transform: `translateY(${i * 16}px) scale(${1 - i * 0.04})`,
-            opacity: 1 - i * 0.18,
-            transitionProperty: 'transform, opacity',
+            transitionProperty: 'transform',
             transitionDuration: '520ms',
             transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            backgroundColor: i === 0 ? '#0D0D12' : '#0a0a0e',
+            zIndex: 3 - i,
           }}
         >
-          <div className="text-xs tracking-[0.18em] text-white/60">DIAGNÓSTICO</div>
-          <div className="mt-2 text-sm text-white/85">{t}</div>
+          <div className="text-xs tracking-[0.18em] text-white/60">QUÉ VAMOS A HACER</div>
+          <div className="mt-2 text-sm text-white/90">{t}</div>
         </div>
       ))}
     </div>
@@ -128,7 +129,7 @@ function TelemetryTypewriter() {
         <div className="flex items-center gap-2 text-xs text-white/60">
           <span className="relative inline-flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--champagne)] opacity-40" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--champagne)]" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
           conectado
         </div>
@@ -146,6 +147,51 @@ function TelemetryTypewriter() {
           }}
         />
       </div>
+    </div>
+  );
+}
+
+/** Paneles inclinados tipo flow como fondo grande del hero (derecha), superpuestos y semitransparentes */
+const TILT_CARDS = [
+  { rotate: -10, x: '58%', y: '-2%', w: '46%', minH: '220px', opacity: 0.58, content: ['prompt → modelo', '→ resultado', 'clicks'] },
+  { rotate: -5, x: '63%', y: '12%', w: '42%', minH: '200px', opacity: 0.46, content: ['idea → MVP', '→ deploy', 'iteración'] },
+  { rotate: 2, x: '67%', y: '26%', w: '38%', minH: '190px', opacity: 0.36, content: ['input → AI', '→ output', 'flow'] },
+  { rotate: 6, x: '70%', y: '40%', w: '36%', minH: '180px', opacity: 0.28, content: ['cursor → ship', '→ repeat', 'loop'] },
+];
+
+function HeroTiltBackground() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden
+    >
+      {TILT_CARDS.map((card, i) => (
+        <div
+          key={i}
+          className="absolute rounded-2xl border border-white/[0.08] bg-[#0D0D12]/60 backdrop-blur-sm"
+          style={{
+            left: card.x,
+            top: card.y,
+            width: card.w,
+            minHeight: card.minH,
+            transform: `rotate(${card.rotate}deg)`,
+            opacity: card.opacity,
+            boxShadow: '0 20px 40px -15px rgba(0,0,0,.4)',
+          }}
+        >
+          <div className="flex h-full flex-col justify-between p-4 text-white/40">
+            <div className="font-mono text-xs tracking-wide">
+              {card.content[0]}
+            </div>
+            <div className="font-mono text-xs tracking-wide text-white/30">
+              → {card.content[1]}
+            </div>
+            <div className="text-[10px] uppercase tracking-widest text-white/25">
+              {card.content[2]}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -229,79 +275,14 @@ function CursorProtocolScheduler() {
   );
 }
 
-function Philosophy() {
-  const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const lines = Array.from(el.querySelectorAll('[data-manifesto]')) as HTMLElement[];
-    const words = lines.flatMap((line) => {
-      const text = line.textContent ?? '';
-      line.textContent = '';
-      return text.split(' ').map((w) => {
-        const span = document.createElement('span');
-        span.textContent = w + ' ';
-        span.style.display = 'inline-block';
-        span.style.opacity = '0';
-        span.style.transform = 'translateY(10px)';
-        line.appendChild(span);
-        return span;
-      });
-    });
-
-    gsap.to(words, {
-      opacity: 1,
-      y: 0,
-      duration: 0.55,
-      ease: 'power3.out',
-      stagger: 0.015,
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 72%',
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
-  return (
-    <section className="relative mt-20 overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#07070B] px-6 py-16 md:px-12">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.10]"
-        style={{
-          backgroundImage:
-            'url(https://images.unsplash.com/photo-1528459105426-b9548367069b?auto=format&fit=crop&w=1600&q=60)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'saturate(0.7) contrast(1.05)',
-          transform: 'translateZ(0)',
-        }}
-      />
-      <div className="relative mx-auto max-w-4xl" ref={ref}>
-        <p className="text-sm text-white/60" data-manifesto>
-          La mayoría de cursos se enfocan en: frameworks, teoría eterna, y tutoriales que no se deployean.
-        </p>
-        <p
-          className="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]"
-          data-manifesto
-        >
-          Nosotros nos enfocamos en: <span style={{ fontFamily: 'Playfair Display, serif', fontStyle: 'italic', color: 'var(--champagne)' }}>entregar</span>.
-        </p>
-      </div>
-    </section>
-  );
-}
 
 export default function CourseHomeInstrument() {
   const ref = useRef<HTMLElement | null>(null);
   useHeroReveal(ref as any);
 
   return (
-    <section ref={ref as any} className="mx-auto max-w-6xl px-5 pt-28 pb-16">
+    <section ref={ref as any} className="mx-auto max-w-6xl px-5 pt-28">
       {/* Hero sentinel for FloatingNav morph */}
       <div id="hero-sentinel" className="h-1 w-1" />
 
@@ -310,14 +291,15 @@ export default function CourseHomeInstrument() {
           background:
             'radial-gradient(900px 340px at 20% 20%, rgba(225,198,132,0.22), transparent 55%), radial-gradient(700px 280px at 80% 30%, rgba(132,199,225,0.14), transparent 60%)',
         }} />
+        <HeroTiltBackground />
 
-        <div className="relative grid gap-10 md:grid-cols-[1.2fr_1fr]">
+        <div className="relative">
           <div>
             <div data-reveal className="inline-flex items-center gap-2 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 px-4 py-2 text-xs tracking-[0.2em] text-white/70">
-              <Sparkles size={14} /> VIBECODING 16 — 0 → PRO
+              <Sparkles size={14} /> DISEÑO INTERACTIVO
             </div>
 
-            <h1 data-reveal className="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02]">
+            <h1 data-reveal className="mt-6 text-4xl md:w-[80%] md:text-6xl font-extrabold tracking-tight leading-[1.02]">
               Aprendé a construir producto real,
               <span
                 className="ml-3"
@@ -329,7 +311,7 @@ export default function CourseHomeInstrument() {
             </h1>
 
             <p data-reveal className="mt-5 text-white/75 max-w-xl">
-              Sin frameworks. Con criterio. Con IA como feature (cuando suma) y con entregas semanales.
+              Cómo pasar de la idea al producto, con la Inteligencia Artificial como copiloto.
             </p>
 
             <div data-reveal className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -348,36 +330,28 @@ export default function CourseHomeInstrument() {
             </div>
           </div>
 
-          <div className="grid gap-4">
-            <div data-reveal className="rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5">
-              <div className="text-xs tracking-[0.22em] text-white/60">FEATURES</div>
-              <p className="mt-2 text-white/75">
-                Artefactos interactivos (micro‑UI). No marketing muerto.
-              </p>
-            </div>
-
-            <div data-reveal className="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
-              <div className="text-sm font-semibold">Diagnostic Shuffler</div>
+          <div className="mt-12 grid gap-4 md:grid-cols-3 md:items-stretch">
+            <div data-reveal className="flex min-h-0 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)] md:h-full">
+              <div className="text-sm font-semibold">Los procesos del futuro</div>
               <p className="mt-1 text-sm text-white/65">Elegí el camino más corto al valor.</p>
-              <div className="mt-4"><DiagnosticShuffler /></div>
+              <div className="mt-4 flex-1 min-h-0"><DiagnosticShuffler /></div>
             </div>
 
-            <div data-reveal className="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
-              <div className="text-sm font-semibold">Telemetry Typewriter</div>
+            <div data-reveal className="flex min-h-0 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)] md:h-full">
+              <div className="text-sm font-semibold">Deja que la IA te ayude a generar valor</div>
               <p className="mt-1 text-sm text-white/65">Iteración real: feedback + límites + costo.</p>
-              <div className="mt-4"><TelemetryTypewriter /></div>
+              <div className="mt-4 flex-1 min-h-0"><TelemetryTypewriter /></div>
             </div>
 
-            <div data-reveal className="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
-              <div className="text-sm font-semibold">Cursor Protocol Scheduler</div>
-              <p className="mt-1 text-sm text-white/65">Disciplina semanal: construir, shippear, repetir.</p>
-              <div className="mt-4"><CursorProtocolScheduler /></div>
+            <div data-reveal className="flex min-h-0 flex-col rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,.35)] md:h-full">
+              <div className="text-sm font-semibold">Avances semanales</div>
+              <p className="mt-1 text-sm text-white/65">Ejercicios prácticos para avanzar todos los días.</p>
+              <div className="mt-4 flex-1 min-h-0"><CursorProtocolScheduler /></div>
             </div>
           </div>
         </div>
       </div>
 
-      <Philosophy />
     </section>
   );
 }

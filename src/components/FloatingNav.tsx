@@ -1,12 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
+const LAST_CLASS_KEY = 'di-last-class';
+
+const CLASS_SLUGS = [
+  '01-orientacion', '02-playgrounds', '03-ux-flujo-mvp', '04-antigravity',
+  '05-mcp-skills', '06-git-vercel', '07-js-dom', '08-iteracion', '09-api-gemini-primera-peticion',
+  '10-gemini-uso-real', '11-avance', '12-avance', '13-avance',
+  '14-avance', '15-avance', '16-muestra',
+];
+
 function cn(...xs: Array<string | false | undefined>) {
   return xs.filter(Boolean).join(' ');
 }
 
+function getCtaFromStorage(): { label: 'Empezar' | 'Seguir'; href: string } {
+  if (typeof window === 'undefined') {
+    return { label: 'Empezar', href: '/clase/01-orientacion' };
+  }
+  const last = window.localStorage.getItem(LAST_CLASS_KEY);
+  const lastN = last ? parseInt(last, 10) : 0;
+  if (!lastN || lastN < 1) {
+    return { label: 'Empezar', href: '/clase/01-orientacion' };
+  }
+  if (lastN >= 16) {
+    return { label: 'Seguir', href: '/plan' };
+  }
+  return { label: 'Seguir', href: `/clase/${CLASS_SLUGS[lastN]}` };
+}
+
 export default function FloatingNav() {
   const [solid, setSolid] = useState(false);
+  const [cta, setCta] = useState<{ label: 'Empezar' | 'Seguir'; href: string }>({ label: 'Empezar', href: '/clase/01-orientacion' });
 
   useEffect(() => {
     const sentinel = document.getElementById('hero-sentinel');
@@ -23,6 +48,20 @@ export default function FloatingNav() {
     return () => obs.disconnect();
   }, []);
 
+  // Persistir última clase visitada y actualizar CTA al cargar la página
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const match = pathname.match(/^\/clase\/([^/]+)$/);
+    if (match) {
+      const slug = match[1];
+      const idx = CLASS_SLUGS.indexOf(slug);
+      if (idx !== -1) {
+        window.localStorage.setItem(LAST_CLASS_KEY, String(idx + 1));
+      }
+    }
+    setCta(getCtaFromStorage());
+  }, []);
+
   return (
     <div className="fixed left-1/2 top-5 z-50 -translate-x-1/2">
       <div
@@ -35,26 +74,18 @@ export default function FloatingNav() {
       >
         <div className="flex items-center gap-3">
           <a className="px-2 font-semibold tracking-tight" href="/">
-            Vibecoding <span className="opacity-70">16</span>
+          Diseño <span className="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}> interactivo</span>
           </a>
+         
 
-          <nav className="hidden md:flex items-center gap-3 px-2 text-sm text-white/75">
+          <nav className="md:min-w-[140px] items-center text-right gap-3 px-2 text-sm text-white/75">
             <a className="transition hover:-translate-y-[1px] hover:text-white" href="/plan">
               Plan
-            </a>
-            <a className="transition hover:-translate-y-[1px] hover:text-white" href="/recursos">
-              Recursos
-            </a>
-            <a className="transition hover:-translate-y-[1px] hover:text-white" href="/ejemplos">
-              Ejemplos
-            </a>
-            <a className="transition hover:-translate-y-[1px] hover:text-white" href="/profesor/01-orientacion">
-              Profesor
             </a>
           </nav>
 
           <a
-            href="/plan"
+            href={cta.href}
             className={cn(
               'inline-flex items-center gap-2 rounded-[2rem] px-4 py-2 font-semibold',
               'bg-[color:var(--champagne)] text-[#0D0D12]',
@@ -62,7 +93,7 @@ export default function FloatingNav() {
               '[transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)]'
             )}
           >
-            Empezar <ArrowRight size={16} />
+            {cta.label} <ArrowRight size={16} />
           </a>
         </div>
       </div>

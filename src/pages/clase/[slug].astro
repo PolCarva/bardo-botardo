@@ -17,7 +17,7 @@ const tools = lesson.tools;
 ---
 
 <Layout title={`Clase ${String(lesson.n).padStart(2,'0')} — ${lesson.title}`}>
-  <article class="mx-auto max-w-3xl px-5 pt-12">
+  <article class="mx-auto max-w-3xl px-5 pt-24">
     <div class="text-xs tracking-[0.22em] text-white/60">CLASE {String(lesson.n).padStart(2,'0')}</div>
     <h1 class="mt-3 text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">{lesson.title}</h1>
     <p class="mt-4 text-white/75">Resultado esperado: <strong>{lesson.outcome}</strong></p>
@@ -42,18 +42,409 @@ const tools = lesson.tools;
     </div>
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold">Agenda <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(guía)</span></h2>
-      <ol class="mt-3 list-decimal space-y-2 pl-5 text-white/75">
-        <li>Contexto rápido (qué vamos a construir hoy y por qué).</li>
-        <li>Demo corta (ejemplo real / mini-caso).</li>
-        <li>Manos a la obra (paso a paso).</li>
-        <li>Entrega: commit + checklist + mini retro.</li>
-      </ol>
+      <h2 class="text-3xl font-semibold">Agenda <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(guía)</span></h2>
+      
     </section>
+
+    {lesson.n === 2 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Herramientas del flujo <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(qué es cada una)</span></h2>
+
+        <div class="mt-3 grid gap-4">
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">Mixboard</h3>
+            <p class="mt-2 text-white/75">
+              Herramienta de <strong>Google Labs</strong> para crear moodboards con IA. A partir de un texto o de imágenes que subas,
+              generás tableros de concepto, editás con lenguaje natural y iterás con “más como esto” o “regenerar”.
+              Ideal para explorar direcciones visuales antes de tocar código.
+            </p>
+            <p class="mt-2">
+              <a class="text-[color:var(--champagne)] font-medium" href="https://labs.google/mixboard" target="_blank" rel="noreferrer">labs.google/mixboard</a>
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">Stitch</h3>
+            <p class="mt-2 text-white/75">
+              Herramienta de <strong>Google</strong> que convierte texto e imágenes (wireframes, bocetos, capturas) en diseños de UI
+              y en código frontend listo para usar. Generás variantes, exportás a Figma o pegás el código en tu app.
+              Muy útil para ir de idea visual → pantallas → código en minutos.
+            </p>
+            <p class="mt-2">
+              <a class="text-[color:var(--champagne)] font-medium" href="https://stitch.withgoogle.com/" target="_blank" rel="noreferrer">stitch.withgoogle.com</a>
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">v0</h3>
+            <p class="mt-2 text-white/75">
+              Generador de UI de <strong>Vercel</strong> por prompt. Escribís qué querés (componentes, layouts, estilos) y te devuelve
+              interfaces en React con Tailwind y Shadcn. Muy bueno para prototipar UIs y copiar/pegar en tu proyecto.
+            </p>
+            <p class="mt-2">
+              <a class="text-[color:var(--champagne)] font-medium" href="https://v0.dev/" target="_blank" rel="noreferrer">v0.dev</a>
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">Opal</h3>
+            <p class="mt-2 text-white/75">
+              Constructor de <strong>mini-apps con IA</strong> de Google, sin código. Describís la app en lenguaje natural y Opal arma
+              un flujo visual (bloques conectados). Editás con texto o con el editor de nodos, usás Gemini por detrás,
+              y obtenés un link para probar y compartir. Ideal para MVPs y demos rápidas.
+            </p>
+            <p class="mt-2">
+              <a class="text-[color:var(--champagne)] font-medium" href="https://developers.google.com/opal" target="_blank" rel="noreferrer">developers.google.com/opal</a>
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
+            <h3 class="text-lg font-semibold">Google Labs</h3>
+            <p class="mt-2 text-white/75">
+              Hub de <strong>experimentos</strong> de Google (IA, diseño, productividad). Ahí viven Mixboard, Stitch y otras herramientas
+              en beta. Sirve para estar al día con qué sale nuevo y probar cosas antes de que sean producto final.
+            </p>
+            <p class="mt-2">
+              <a class="text-[color:var(--champagne)] font-medium" href="https://labs.google/" target="_blank" rel="noreferrer">labs.google</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {lesson.n === 3 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">No le pidas a la IA que “lo haga” <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(diagramá antes)</span></h2>
+        <p class="mt-3 text-white/75">
+          El diseño se nota “hecho por IA” cuando <strong>no hay dirección tuya</strong>: la herramienta inventa todo y cae en lo genérico.
+          La idea de esta clase es al revés: vos definís la estética, el flujo y el esquema; la IA ayuda a materializar, no a decidir.
+        </p>
+
+        <h3 class="mt-8 text-lg font-semibold">Orden de trabajo, paso a paso</h3>
+        <div class="mt-4 space-y-5">
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 1 — Definir la estética de la marca primero</span>
+            <p class="mt-2 text-white/75">
+              Antes de generar nada: <strong>paleta (1 principal, 1 acento, neutros), tipografía (títulos + cuerpo), 2–3 referencias visuales</strong>.
+              Puede ser del moodboard de la clase 2. Anotalo en un doc o en una hoja. Así cuando uses la IA, ya tenés “las reglas” y no le pedís que invente el estilo.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 2 — Tener una idea clara del flujo del producto</span>
+            <p class="mt-2 text-white/75">
+              ¿Qué pantallas tiene el MVP? ¿Qué hace el usuario de entrada a salida? ¿Qué entra en la primera versión y qué no?
+              <strong>Escribilo o dibujalo en pocas líneas</strong>: “entra por landing → hace X → ve Y → termina en Z”. Sin esto, la IA te va a dar “una app” genérica.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 3 — Croquis con la estética ya en la mente</span>
+            <p class="mt-2 text-white/75">
+              Con la estética y el flujo ya definidos, <strong>hacé bocetos a mano (papel o digital)</strong>: cajas, títulos, botones, dónde va cada cosa.
+              No hace falta que sean lindos; tienen que reflejar tu decisión de layout y jerarquía. Así tenés “la idea en la cabeza” antes de abrir v0 o Stitch.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 4 — Diagramar antes de pedirle a la IA</span>
+            <p class="mt-2 text-white/75">
+              <strong>No le pidas a la IA que “diseñe el MVP”</strong>. En cambio: armá un diagrama o lista de pantallas (flujo + qué va en cada una)
+              y usá ese diagrama como brief. Por ejemplo: “Pantalla 1: hero con headline X, CTA Y, colores A y B, tipografía Z”.
+              La IA ejecuta tu esquema; vos ya decidiste la dirección.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 5 — Dar la IA con restricciones (no en blanco)</span>
+            <p class="mt-2 text-white/75">
+              Cuando abras v0/Stitch, <strong>empezá con tu estética y tu diagrama</strong>: “Landing con esta paleta [colores], esta tipografía [nombre], estructura: hero + 3 features + CTA. Estilo como [referencia].”
+              Si iterás, repetí las reglas: “manteniendo la paleta y la tipografía, solo cambiá el espaciado del hero”.
+            </p>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <span class="text-sm font-semibold text-[color:var(--champagne)]">Paso 6 — Un detalle humano</span>
+            <p class="mt-2 text-white/75">
+              Sumá algo que no venga del set por defecto: <strong>copy real para tu producto, una imagen, un ícono o un microcopy con tono</strong>.
+              Un solo detalle elegido por vos hace que no se sienta 100% generado.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5 text-white/75">
+          <strong>Resumen:</strong> primero estética de la marca, después idea del flujo del producto, después croquis con esa estética en la cabeza, después diagramar (pantallas y contenido). Recién ahí le pedís a la IA que materialice con esas restricciones — no que “lo haga” desde cero.
+        </div>
+      </section>
+    )}
+
+    {lesson.n === 4 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Qué es Antigravity <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(y para qué sirve)</span></h2>
+        <p class="mt-3 text-white/75">
+          <strong>Antigravity</strong> es el IDE agéntico de Google: un editor basado en VS Code donde el centro es el agente de IA (Gemini 3).
+          No es solo autocompletar: podés delegar tareas (crear archivos, correr comandos, probar en el browser) y elegir cuánta autonomía darle.
+        </p>
+        <p class="mt-2 text-white/75">
+          <a class="text-[color:var(--champagne)] font-medium" href="https://antigravity.google/" target="_blank" rel="noreferrer">antigravity.google</a>
+        </p>
+
+        <h3 class="mt-8 text-lg font-semibold">Cómo funciona</h3>
+        <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+          <li><strong>Manager (asíncrono):</strong> panel para lanzar y ver varios agentes a la vez; cada uno puede trabajar en una tarea o proyecto en paralelo.</li>
+          <li><strong>Editor (síncrono):</strong> el IDE clásico con chat, tab completion y edición; acá trabajás mano a mano con el modelo.</li>
+          <li><strong>Artifacts:</strong> el agente puede generar planes, listas de tareas, capturas o grabaciones del browser para que revises sin mirar cada tool call.</li>
+          <li><strong>Integración Nano Banana:</strong> generación de imágenes on demand dentro del IDE (útil para UIs, assets, mockups).</li>
+        </ul>
+
+        <h3 class="mt-8 text-lg font-semibold">Tipos de modelo (Gemini)</h3>
+        <p class="mt-2 text-white/75">Antigravity usa solo modelos de Google. Elegí según la tarea:</p>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li><strong>Gemini 3 Pro (high)</strong> — tareas que piden más razonamiento, planificación o código complejo; contexto muy grande (1M+ tokens).</li>
+          <li><strong>Gemini 3 Pro (low)</strong> — tareas rápidas, cambios chicos o cuando priorizás velocidad sobre máxima calidad.</li>
+          <li><strong>Gemini 3 Pro con Deep Think</strong> — nivel de “pensamiento” configurable; más razonamiento paso a paso, ideal para bugs difíciles o diseños de arquitectura (más latencia y costo).</li>
+          <li><strong>Gemini 2.5 (Computer Use)</strong> — usado por Antigravity para automatizar el browser: probar la app, hacer clics, validar pantallas. No lo elegís a mano; el IDE lo usa cuando el agente interactúa con la web.</li>
+          <li><strong>Nano Banana</strong> — generación de imágenes integrada en el IDE (mockups, assets, ilustraciones). El agente puede pedir imágenes cuando el prompt lo requiere.</li>
+        </ul>
+        <p class="mt-2 text-white/75">Para código: Gemini 3 Pro high/low (y Deep Think si necesitás más razonamiento). Para browser y para imágenes, el resto entra en juego solo.</p>
+
+        <h3 class="mt-8 text-lg font-semibold">Cómo usar el contexto</h3>
+        <p class="mt-2 text-white/75">
+          El agente necesita ver tu código y tu proyecto. En el chat del agente (<code>Cmd+L</code> o equivalente):
+        </p>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>El <strong>contexto del workspace</strong> se usa automáticamente (archivos abiertos, proyecto).</li>
+          <li>Para ser explícito: usá <strong>menciones con <code>@</code></strong> — por ejemplo <code>@archivo.js</code>, <code>@carpeta/</code>, o <code>@MCP</code> para traer herramientas/servidores MCP al contexto.</li>
+          <li>Con <strong><code>/</code></strong> podés invocar workflows o prompts guardados.</li>
+        </ul>
+        <p class="mt-2 text-white/75">Cuanto mejor describas la tarea y señales archivos/carpetas relevantes con <code>@</code>, más preciso será el agente.</p>
+
+        <h3 class="mt-8 text-lg font-semibold">Menciones (@)</h3>
+        <p class="mt-2 text-white/75">
+          Las <strong>menciones</strong> son la forma de “inyectar” contexto en el prompt:
+        </p>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li><code>@nombre-de-archivo</code> — incluye ese archivo en el contexto.</li>
+          <li><code>@carpeta/</code> — incluye los archivos de esa carpeta.</li>
+          <li><code>@MCP</code> o un servidor MCP concreto — da acceso a herramientas (Git, browser, docs, etc.).</li>
+        </ul>
+        <p class="mt-2 text-white/75">Así el modelo no adivina: trabaja sobre lo que vos le pasás.</p>
+
+        <h3 class="mt-8 text-lg font-semibold">Tipos de modo</h3>
+        <div class="mt-3 space-y-4">
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <strong class="text-[color:var(--champagne)]">Planning mode</strong>
+            <p class="mt-2 text-white/75">El agente primero arma un plan (documento, pasos, tareas) y te deja revisar o intervenir. Después ejecuta. Mejor para cambios grandes o cuando querés control.</p>
+          </div>
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <strong class="text-[color:var(--champagne)]">Fast mode</strong>
+            <p class="mt-2 text-white/75">Ejecuta directo: menos pasos de aprobación, ideal para tareas chicas o cuando confiás en el prompt.</p>
+          </div>
+        </div>
+        <p class="mt-3 text-white/75">También podés elegir <strong>autonomía completa</strong> (crear/borrar archivos, correr terminal sin preguntar) o <strong>parcial</strong> (pide confirmación en acciones críticas).</p>
+
+        <div class="mt-6 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5 text-white/75">
+          <strong>Resumen:</strong> Antigravity = IDE agéntico con Gemini 3, modos Planning/Fast, menciones <code>@</code> para contexto, varios modelos y MCP. Lo usamos a partir de acá para codear con el agente en lugar de solo prompts sueltos.
+        </div>
+      </section>
+    )}
+
+    {lesson.n === 5 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">MCP y Skills en Antigravity <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(Stitch → código real)</span></h2>
+        <p class="mt-3 text-white/75">
+          En esta clase usamos el <strong>MCP de Stitch</strong> para conectar Antigravity con Stitch: así podés generar o elegir un diseño en Stitch y <strong>traer el código a tu proyecto</strong> (copiar un proyecto y pasarlo a la realidad). Además instalamos Skills desde <strong>skills.sh</strong> (Vercel) para que el agente siga guías y buenas prácticas.
+        </p>
+
+        <h3 class="mt-8 text-lg font-semibold">El MCP de Stitch: para qué sirve</h3>
+        <p class="mt-2 text-white/75">
+          Google ofrece un <strong>MCP server para Stitch</strong> que el agente en Antigravity puede usar para:
+        </p>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li><strong>Generar pantallas desde texto</strong> — el agente pide a Stitch que cree una UI desde un prompt y después puede traer el código.</li>
+          <li><strong>Traer el código de una pantalla</strong> — descargar el HTML/frontend de un diseño que ya tenés en Stitch y pegarlo o integrarlo en tu repo.</li>
+          <li><strong>Extraer contexto de diseño</strong> — fuentes, colores, layouts de una pantalla para mantener coherencia.</li>
+          <li><strong>Listar proyectos y pantallas</strong> — ver tus proyectos en Stitch y elegir cuál “copiar a la realidad”.</li>
+        </ul>
+        <p class="mt-3 text-white/75">Flujo que vamos a usar: diseñás (o generás) en Stitch → desde Antigravity usás el MCP para <strong>fetch del código</strong> → el agente te ayuda a integrarlo en tu proyecto. Así el diseño de Stitch pasa a ser código real en tu repo.</p>
+        <p class="mt-2 text-white/75">
+          Docs oficiales: <a class="text-[color:var(--champagne)] font-medium" href="https://stitch.withgoogle.com/docs/mcp/setup/" target="_blank" rel="noreferrer">stitch.withgoogle.com/docs/mcp/setup</a>
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold">Cómo instalar el MCP de Stitch en Antigravity</h3>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-white/75">
+          <li>Tené un <strong>proyecto en Google Cloud con la Stitch API habilitada</strong> y autenticación: <code>gcloud auth application-default login</code>.</li>
+          <li>Abrí Antigravity → panel del Agente → <code>...</code> → <strong>MCP Servers</strong> → <strong>Manage MCP Servers</strong>.</li>
+          <li>Revisá la <strong>documentación de Stitch MCP</strong> (<a class="text-[color:var(--champagne)]" href="https://stitch.withgoogle.com/docs/mcp/setup/" target="_blank" rel="noreferrer">setup</a>) para el bloque exacto que hay que añadir. El archivo de config está en <code>~/.gemini/antigravity/mcp_config.json</code> (macOS/Linux) o <code>C:\Users\&lt;USER&gt;\.gemini\antigravity\mcp_config.json</code> (Windows).</li>
+          <li>Añadí la entrada del servidor Stitch (suele ser por proceso: <code>command</code> + <code>args</code> con el CLI de Stitch MCP, o por URL si usás una versión remota). Guardá el archivo.</li>
+          <li><strong>Reiniciá Antigravity</strong> por completo.</li>
+          <li>En el chat del agente usá <code>@Stitch</code> (o el nombre que le hayas puesto al MCP) y pedí, por ejemplo: “listá mis proyectos de Stitch”, “traé el código de la pantalla X del proyecto Y” o “generá una pantalla con [descripción] y pasame el código”.</li>
+        </ol>
+
+        <h3 class="mt-6 text-lg font-semibold">Skills y skills.sh (Vercel)</h3>
+        <p class="mt-2 text-white/75">
+          <strong>skills.sh</strong> es el directorio abierto de Skills de Vercel: podés buscar e instalar Skills que extienden lo que el agente sabe hacer (React, testing, diseño, deployment, etc.).
+        </p>
+        <p class="mt-2 text-white/75">
+          <a class="text-[color:var(--champagne)] font-medium" href="https://skills.sh/" target="_blank" rel="noreferrer">skills.sh</a> · <a class="text-[color:var(--champagne)] font-medium" href="https://skills.sh/docs" target="_blank" rel="noreferrer">docs</a>
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold">Cómo instalar una Skill y ponerla a funcionar</h3>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-white/75">
+          <li>En la terminal, desde tu proyecto: <code>npx skills add &lt;owner/repo&gt;</code>. Ejemplo: <code>npx skills add vercel-labs/agent-skills</code>.</li>
+          <li>Si el repo tiene varios skills: <code>npx skills add &lt;owner/repo&gt; --skill &lt;nombre&gt;</code>.</li>
+          <li>En Antigravity los Skills quedan en <code>.agent/skills/</code>. El agente los lee solo; abrí el chat y pedí una tarea que el Skill cubra.</li>
+        </ol>
+        <p class="mt-2 text-white/75">Para descubrir: <a class="text-[color:var(--champagne)]" href="https://skills.sh/" target="_blank" rel="noreferrer">skills.sh</a> o <code>npx skills find &lt;query&gt;</code>.</p>
+
+        <h3 class="mt-6 text-lg font-semibold">Resumen rápido</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li><strong>MCP Stitch:</strong> Google Cloud + Stitch API + config en <code>mcp_config.json</code> → reiniciar Antigravity → <code>@Stitch</code> para listar proyectos, traer código de pantallas o generar y bajar código. Así copiás un proyecto de Stitch y lo pasás a la realidad en tu repo.</li>
+          <li><strong>Skill:</strong> <code>npx skills add &lt;repo&gt;</code> → <code>.agent/skills/</code> → el agente los usa en el chat sin pasos extra.</li>
+        </ul>
+
+        <div class="mt-6 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5 text-white/75">
+          <strong>Resumen:</strong> El MCP que usamos es el de Stitch: conectar Antigravity con Stitch para traer diseños como código real. Skills desde skills.sh para conocimiento reutilizable. Los dos se instalan y se usan desde el chat en Antigravity.
+        </div>
+      </section>
+    )}
+
+    {lesson.n === 6 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Git, GitHub, GitHub Desktop y Vercel <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(paso a paso)</span></h2>
+        <p class="mt-3 text-white/75">
+          Para tener tu proyecto en la nube y publicarlo en la web necesitás: <strong>Git</strong> (control de versiones), un <strong>repo en GitHub</strong> y <strong>Vercel</strong> (hosting que despliega desde GitHub). Acá va el flujo paso a paso; podés usar la terminal o <strong>GitHub Desktop</strong> si preferís una interfaz gráfica.
+        </p>
+
+        <h3 class="mt-8 text-lg font-semibold">Paso 1 — Instalá Git y creá una cuenta en GitHub</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>Descargá e instalá <strong>Git</strong>: <a class="text-[color:var(--champagne)]" href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">git-scm.com</a>. En la terminal, <code>git --version</code> para verificar.</li>
+          <li>Creá una cuenta en <strong>GitHub</strong> si no tenés: <a class="text-[color:var(--champagne)]" href="https://github.com/join" target="_blank" rel="noreferrer">github.com/join</a>.</li>
+          <li>Opcional pero recomendado: instalá <strong>GitHub Desktop</strong> para ver commits, ramas y subir cambios con clicks: <a class="text-[color:var(--champagne)]" href="https://desktop.github.com/" target="_blank" rel="noreferrer">desktop.github.com</a>. Inicialo con tu cuenta de GitHub.</li>
+        </ul>
+
+        <h3 class="mt-6 text-lg font-semibold">Paso 2 — Inicializá Git en tu proyecto</h3>
+        <p class="mt-2 text-white/75">Abrí la carpeta de tu proyecto en la terminal (o en GitHub Desktop: File → Add Local Repository).</p>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>En la terminal: <code>git init</code> (crea el repo local).</li>
+          <li>Creá un <code>.gitignore</code> si hace falta (ej. <code>node_modules/</code>, <code>.env</code>, archivos de build que no quieras subir).</li>
+        </ul>
+
+        <h3 class="mt-6 text-lg font-semibold">Paso 3 — Primer commit</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>Terminal: <code>git add .</code> (agrega todo) y <code>git commit -m "Primer commit: landing inicial"</code> (o el mensaje que quieras).</li>
+          <li>Con GitHub Desktop: elegí los archivos que cambió, escribí el mensaje del commit abajo y hacé click en <strong>Commit to main</strong>.</li>
+        </ul>
+
+        <h3 class="mt-6 text-lg font-semibold">Paso 4 — Creá el repo en GitHub y conectalo</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>En <strong>GitHub.com</strong> → botón <strong>+</strong> → <strong>New repository</strong>. Nombre del repo (ej. <code>mi-mvp</code>), público, sin README si ya tenés código local.</li>
+          <li>Terminal: <code>git remote add origin https://github.com/TU-USUARIO/mi-mvp.git</code> (reemplazá por la URL que te da GitHub). Después: <code>git branch -M main</code> y <code>git push -u origin main</code>.</li>
+          <li>Con <strong>GitHub Desktop</strong>: menú <strong>Repository</strong> → <strong>Publish repository</strong> (o “Push origin” si el repo ya existe). Elegí nombre, visibilidad y publicá.</li>
+        </ul>
+
+        <h3 class="mt-6 text-lg font-semibold">Paso 5 — Publicar en Vercel</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li>Entrá a <a class="text-[color:var(--champagne)]" href="https://vercel.com" target="_blank" rel="noreferrer">vercel.com</a> e iniciá sesión (con GitHub es lo más simple).</li>
+          <li><strong>Add New</strong> → <strong>Project</strong>. Vercel lista tus repos de GitHub; elegí el que acabás de subir.</li>
+          <li>Dejá las opciones por defecto (Framework Preset suele detectarse solo; Root Directory si todo está en la raíz, dejalo vacío). Click en <strong>Deploy</strong>.</li>
+          <li>En unos segundos te da una URL (ej. <code>mi-mvp.vercel.app</code>). Cada vez que hagas <code>git push</code> a <code>main</code>, Vercel vuelve a desplegar solo.</li>
+        </ul>
+
+        <h3 class="mt-6 text-lg font-semibold">Resumen del flujo</h3>
+        <p class="mt-2 text-white/75">Git local → commit → repo en GitHub (por terminal o GitHub Desktop) → conectar el repo a Vercel → deploy automático en cada push a <code>main</code>. Después: cualquier cambio que subas a GitHub se publica solo en Vercel.</p>
+      </section>
+    )}
+
+    {(lesson.n === 7 || lesson.n === 8) && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Clase de taller <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(traé lo que necesites)</span></h2>
+        <p class="mt-3 text-white/75">
+          Las clases <strong>7 y 8</strong> son <strong>talleres</strong>: no hay contenido teórico fijo. El tiempo es para que traigas dudas, código, diseños o lo que estés trabajando y lo resolvamos en vivo.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
+          <li><strong>Traé dudas</strong> — de las clases anteriores, del flujo (Stitch, Antigravity, MCP, Skills), de HTML/CSS/JS o de tu proyecto.</li>
+          <li><strong>Traé código</strong> — algo que no te cierre, un error, o una pantalla que quieras mejorar. Lo vemos y lo iteramos.</li>
+          <li><strong>Traé diseño</strong> — moodboards, pantallas de Stitch, croquis. Podemos bajar eso a código o ajustar la dirección.</li>
+          <li>Si no tenés nada concreto, podés usar el taller para <strong>avanzar en tu MVP</strong> con apoyo: el resto del grupo y el profesor están para eso.</li>
+        </ul>
+        <p class="mt-4 text-white/75">No hay entregable obligatorio por taller; el objetivo es que salgas con menos bloqueos y con algo más avanzado que cuando entraste.</p>
+      </section>
+    )}
+
+    {lesson.n === 9 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Qué es una API, API key y primera petición</h2>
+        <h3 class="mt-6 text-lg font-semibold">Qué es una API</h3>
+        <p class="mt-2 text-white/75">
+          Una <strong>API</strong> (Application Programming Interface) es una forma de que un programa hable con otro: vos enviás un <strong>request</strong> (pedido) con datos y el servicio te devuelve un <strong>response</strong> (respuesta). En la web suelen ser llamadas HTTP: <code>POST</code> o <code>GET</code> a una URL, con un cuerpo en JSON. La API de Gemini es así: mandás el texto (y opciones) y Gemini te devuelve el texto generado.
+        </p>
+        <h3 class="mt-6 text-lg font-semibold">Cómo obtener tu API key de Gemini</h3>
+        <ol class="mt-2 list-decimal space-y-2 pl-5 text-white/75">
+          <li>Entrá a <a class="text-[color:var(--champagne)]" href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">aistudio.google.com/apikey</a> e iniciá sesión con tu cuenta de Google.</li>
+          <li>Creá una API key (Create API key → elegí o creá un proyecto). Copiala y <strong>guardala en un lugar seguro</strong>.</li>
+          <li>Nunca la subas al frontend ni la dejes en el código en un repo público. En el servidor usala en variables de entorno (ej. <code>GEMINI_API_KEY</code>).</li>
+        </ol>
+        <h3 class="mt-6 text-lg font-semibold">Primera petición</h3>
+        <p class="mt-2 text-white/75">Para hacer la primera llamada necesitás: la URL del modelo (ej. <code>.../v1beta/models/gemini-2.0-flash:generateContent</code>), el header con la API key (<code>x-goog-api-key: TU_KEY</code>) y un body JSON con <code>contents</code> (el mensaje que querés enviar). Ejemplo mínimo:</p>
+        <pre class="mt-2 overflow-x-auto rounded-xl bg-[#0D0D12]/60 p-4 text-sm text-white/90"><code>{`POST .../v1beta/models/gemini-2.0-flash:generateContent
+Header: x-goog-api-key: TU_API_KEY
+Body: { "contents": [{ "parts": [{ "text": "Decime hola en una palabra" }] }] }`}</code></pre>
+        <p class="mt-3 text-white/75">La respuesta trae <code>candidates[0].content.parts[0].text</code> con el texto generado. Podés probar con Postman, curl o un script en Node usando el SDK <code>@google/generative-ai</code> (en ese caso la key se pasa al inicializar el cliente).</p>
+        <p class="mt-3 text-white/75">Docs: <a class="text-[color:var(--champagne)]" href="https://ai.google.dev/api" target="_blank" rel="noreferrer">ai.google.dev/api</a> · <a class="text-[color:var(--champagne)]" href="https://ai.google.dev/gemini-api/docs" target="_blank" rel="noreferrer">Gemini API docs</a></p>
+      </section>
+    )}
+
+    {lesson.n === 10 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Gemini en uso real: parámetros y respuesta estructurada</h2>
+        <p class="mt-3 text-white/75">
+          Una vez que la primera petición funciona, vas a querer <strong>controlar cómo responde</strong> el modelo y a veces <strong>recibir JSON</strong> en lugar de texto libre. Acá van los parámetros importantes y cómo pedir respuesta estructurada.
+        </p>
+        <h3 class="mt-6 text-lg font-semibold">Qué es cada parámetro (generationConfig)</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-white/75">
+          <li><strong>temperature</strong> (0.0–2.0): aleatoriedad. Bajo = más fijo y predecible; alto = más creativo. Para clasificar o extraer datos usá bajo; para copy o ideas, más alto.</li>
+          <li><strong>maxOutputTokens</strong>: tope de tokens en la respuesta. Limita largo y costo.</li>
+          <li><strong>topP</strong> / <strong>topK</strong>: controlan diversidad del muestreo. Ajustar si querés más o menos variación.</li>
+          <li><strong>stopSequences</strong>: listado de strings con los que la generación se corta (útil para listas o formatos).</li>
+          <li><strong>responseMimeType</strong>: si ponés <code>application/json</code>, el modelo intenta devolver solo JSON válido. Muy útil para integrar con código.</li>
+        </ul>
+        <h3 class="mt-6 text-lg font-semibold">Respuesta estructurada (JSON)</h3>
+        <p class="mt-2 text-white/75">Para recibir JSON: en <code>generationConfig</code> poné <code>responseMimeType: "application/json"</code> y en el prompt describí claramente el formato (ej. “Devolvé un JSON con keys: titulo (string), items (array de strings)”). Así podés hacer <code>JSON.parse(response.text())</code> y usar el resultado en tu app.</p>
+        <h3 class="mt-6 text-lg font-semibold">generateContent vs stream</h3>
+        <p class="mt-2 text-white/75"><strong>generateContent</strong> te devuelve toda la respuesta de una vez. <strong>generateContentStream</strong> te va mandando trozos; en la UI podés ir mostrando el texto mientras llega (mejor para chats o respuestas largas). En código: usás el método stream del SDK y iterás sobre los chunks.</p>
+        <p class="mt-4 text-white/75">Resumen: configurás <code>generationConfig</code> con temperature, maxOutputTokens y, si necesitás, responseMimeType para JSON; elegís respuesta de una vez o por stream según la experiencia que quieras dar.</p>
+      </section>
+    )}
+
+    {(lesson.n >= 11 && lesson.n < 16) && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Taller avance obligatorios <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(clases 11–15)</span></h2>
+        <p class="mt-3 text-white/75">
+          Las clases <strong>11 a 15</strong> son <strong>talleres de avance</strong>: no hay contenido teórico nuevo. El tiempo es para que trabajes en los obligatorios del curso (MVP, integración con Gemini, producto con IA, etc.) con dudas, código y apoyo del grupo y del profesor.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-white/75">
+          <li>Traé <strong>dudas</strong> de la API de Gemini, del flujo frontend/backend, o de tu proyecto.</li>
+          <li>Traé <strong>código</strong> o diseño: lo que estés construyendo para los obligatorios. Lo vemos y lo iteramos.</li>
+          <li>Si no tenés algo concreto, usá el taller para <strong>avanzar</strong> en el obligatorio que te toque (primera entrega, producto con IA, etc.).</li>
+        </ul>
+        <p class="mt-4 text-white/75">No hay entregable por clase; el objetivo es que salgas con menos bloqueos y con avance real en los obligatorios.</p>
+      </section>
+    )}
+
+    {lesson.n === 16 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Muestra <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(clase 16)</span></h2>
+        <p class="mt-3 text-white/75">
+          Esta clase es la <strong>muestra</strong>: presentación y demo de los productos con IA integrada. Cada uno muestra el flujo (usuario → frontend/backend → Gemini → resultado), cuenta qué hace la IA en su producto y recibe feedback del grupo o del profesor.
+        </p>
+        <p class="mt-4 text-white/75">Cierra el curso con una ronda de feedback y próximos pasos para seguir mejorando.</p>
+      </section>
+    )}
 
     {lesson.n === 1 && (
       <section class="mt-10">
-        <h2 class="text-xl font-semibold">Lo que tenés que entender HOY (sin humo)</h2>
+        <h2 class="text-xl font-semibold">Lo que tenés que entender HOY</h2>
 
         <div class="mt-3 grid gap-4">
           <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
@@ -82,7 +473,7 @@ const tools = lesson.tools;
           </div>
 
           <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5 transition hover:-translate-y-[1px]">
-            <h3 class="text-lg font-semibold">3) Pricing <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>sin llorar</span></h3>
+            <h3 class="text-lg font-semibold">3) Pricing <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(paga la ort)</span></h3>
             <p class="mt-2 text-white/75">
               Casi todos los providers cobran <strong>por uso</strong>. Regla práctica: la salida suele costar más que la entrada.
               Si tu app manda mucho contexto o genera respuestas largas, pagás más.
@@ -147,6 +538,106 @@ const tools = lesson.tools;
             Bonus: si encontrás un caso local UY/AR, vale doble.
           </p>
         </div>
+      ) : lesson.n === 2 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Ejercicio de esta clase:</strong> usar las herramientas del flujo para ir de idea a algo tangible en poco rato.
+          </p>
+          <ol class="mt-4 list-decimal space-y-3 pl-5">
+            <li><strong>Moodboard rápido</strong> — Con Mixboard (o similar), armá un tablero de referencia visual para una idea de producto (paleta, estilo, referencias).</li>
+            <li><strong>Diseño a partir del moodboard</strong> — Con Stitch, pasá de ese moodboard a pantallas concretas (wireframes o UI generada por prompt).</li>
+            <li><strong>MVP rapidito</strong> — Con v0 u Opal, generá un prototipo funcional o mini-app que se pueda ver y compartir (link o código).</li>
+          </ol>
+          <p class="mt-4">
+            Entregable: el moodboard + captura o link del diseño + link o repo del MVP mínimo. Anotá qué herramienta te resultó más útil y por qué.
+          </p>
+        </div>
+      ) : lesson.n === 3 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Ejercicio de esta clase:</strong> seguir el orden: estética → flujo → croquis → diagrama → recién ahí la IA.
+          </p>
+          <ol class="mt-4 list-decimal space-y-2 pl-5">
+            <li>Definí la <strong>estética de la marca</strong> (paleta, tipografía, 2–3 referencias) y anotala en un doc.</li>
+            <li>Escribí o dibujá el <strong>flujo del producto</strong> (qué pantallas, qué hace el usuario, qué entra en el MVP).</li>
+            <li>Hacé <strong>croquis a mano</strong> de al menos una pantalla, con esa estética en la cabeza (cajas, títulos, CTA).</li>
+            <li><strong>Diagramá</strong> esa pantalla en un brief corto (estructura + colores + tipografía por nombre).</li>
+            <li>Recién entonces abrí v0 o Stitch y pedí que materialice <strong>con ese brief</strong> (no “diseñá una landing”).</li>
+            <li>Sumá <strong>un detalle humano</strong> (copy real, imagen o ícono) al resultado.</li>
+          </ol>
+          <p class="mt-4">
+            Entregable: doc con estética + flujo, foto o scan del croquis, el brief y captura del resultado generado con esas restricciones.
+          </p>
+        </div>
+      ) : lesson.n === 4 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Ejercicio de esta clase:</strong> usar Antigravity con contexto y modos claros.
+          </p>
+          <ol class="mt-4 list-decimal space-y-2 pl-5">
+            <li>Descargá e instalá Antigravity; abrí un proyecto pequeño (o el de las clases 2–3).</li>
+            <li>Probá <strong>Planning mode</strong> con una tarea concreta (ej. “Crear una landingo con X e Y características”) y revisá el plan antes de que ejecute.</li>
+            <li>Probá <strong>Fast mode</strong> con algo chico (ej. “cambiá el color del CTA a Oliva”).</li>
+            <li>En el chat del agente, usá <strong><code>@</code></strong> para mencionar un archivo y una carpeta; pedí un cambio que dependa de ese contexto.</li>
+          </ol>
+          <p class="mt-4">
+            Entregable: captura o nota de qué tarea delegaste, qué modo usaste y cómo usaste las menciones. Una cosa que te haya sorprendido o que hayas tenido que corregir.
+          </p>
+        </div>
+      ) : lesson.n === 5 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Ejercicio de esta clase:</strong> instalar el MCP de Stitch y una Skill, y usar ambos para llevar un diseño a la realidad.
+          </p>
+          <ol class="mt-4 list-decimal space-y-2 pl-5">
+            <li><strong>MCP de Stitch:</strong> seguí la guía en <a class="text-[color:var(--champagne)]" href="https://stitch.withgoogle.com/docs/mcp/setup/" target="_blank" rel="noreferrer">stitch.withgoogle.com/docs/mcp/setup</a> (Google Cloud, Stitch API, <code>mcp_config.json</code>, reinicio de Antigravity). En el chat del agente usá <code>@Stitch</code> y hacé algo concreto: listar tus proyectos, traer el código de una pantalla de Stitch a tu repo, o generar una pantalla desde texto y copiar el código a tu proyecto. El objetivo es <strong>copiar un proyecto (o una pantalla) de Stitch y pasarlo a la realidad</strong> en tu código.</li>
+            <li><strong>Skill:</strong> entrá a <a class="text-[color:var(--champagne)]" href="https://skills.sh/" target="_blank" rel="noreferrer">skills.sh</a> (o <code>npx skills find &lt;tema&gt;</code>), elegí una Skill que te sirva (frontend, React, testing, etc.), instalala con <code>npx skills add &lt;repo&gt;</code> y pedile al agente que haga una tarea que use ese conocimiento (ej. aplicar las reglas del skill al integrar el código que bajaste de Stitch).</li>
+            <li>Anotá los pasos que seguiste, qué pantalla o proyecto de Stitch trajiste a tu repo y qué Skill usaste. Si algo falló, anotalo para repasarlo.</li>
+          </ol>
+          <p class="mt-4">
+            Entregable: descripción corta de cómo instalaste el MCP de Stitch y la Skill, y un ejemplo de algo que hayas hecho con cada uno — en particular, <strong>un diseño/pantalla de Stitch que hayas pasado a código real</strong> en tu proyecto (captura o link al repo).
+          </p>
+        </div>
+      ) : lesson.n === 6 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Ejercicio de esta clase:</strong> seguir los pasos y dejar tu proyecto en GitHub y publicado en Vercel.
+          </p>
+          <ol class="mt-4 list-decimal space-y-2 pl-5">
+            <li>Si todavía no lo hiciste: inicializá Git en tu proyecto, hacé un primer commit y creá un repo en GitHub. Subí el código (por terminal con <code>git remote add origin</code> + <code>git push</code>, o con GitHub Desktop con Publish repository).</li>
+            <li>Conectá ese repo a Vercel (vercel.com → Add New → Project → elegí el repo → Deploy).</li>
+            <li>Comprobá que la URL que te da Vercel muestra tu proyecto. Después hacé un cambio chico (ej. un texto en la landing), otro commit, subilo a GitHub y verificá que Vercel redeploya solo.</li>
+          </ol>
+          <p class="mt-4">
+            Entregable: link al repo en GitHub y link a la versión publicada en Vercel. Si algo no te funcionó, anotalo para repasarlo en el taller.
+          </p>
+        </div>
+      ) : (lesson.n === 7 || lesson.n === 8) ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p>
+            <strong>Taller:</strong> no hay entregable obligatorio. Traé dudas, código o diseño; el tiempo es para codear, diseñar y resolver lo que necesites con el grupo y el profesor.
+          </p>
+          <p class="mt-3 text-white/75">
+            Si querés llegar con algo concreto: anotá 1–2 cosas en las que te gustaría avanzar (un bloqueo, una pantalla, un bug) y trabajamos en eso en vivo.
+          </p>
+        </div>
+      ) : lesson.n === 9 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p><strong>Ejercicio:</strong> obtené una API key en <a class="text-[color:var(--champagne)]" href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">aistudio.google.com/apikey</a> y hacé una llamada mínima a Gemini (por Postman, curl o un script Node con el SDK). Verificá que recibís <code>{`candidates[0].content.parts[0].text`}</code>. No subas la key al repo.</p>
+        </div>
+      ) : lesson.n === 10 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p><strong>Ejercicio:</strong> en la misma llamada (o en un script), probá <code>{`temperature`}</code> y <code>{`maxOutputTokens`}</code> y anotá cómo cambia la respuesta. Probá <code>{`responseMimeType: "application/json"`}</code> con un prompt que pida un JSON (ej. un objeto con título y lista de items). Opcional: probá <code>{`generateContentStream`}</code> y leé los chunks.</p>
+        </div>
+      ) : (lesson.n >= 11 && lesson.n < 16) ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p><strong>Taller avance obligatorios:</strong> no hay entregable por clase. Traé dudas, código o lo que estés trabajando para los obligatorios del curso; el tiempo es para avanzar con el grupo y el profesor.</p>
+          <p class="mt-3 text-white/75">Si querés llegar con algo concreto: anotá 1–2 cosas en las que te gustaría avanzar (un bloqueo, una integración con Gemini, un flujo) y trabajamos en eso en vivo.</p>
+        </div>
+      ) : lesson.n === 16 ? (
+        <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
+          <p><strong>Muestra:</strong> demo del producto con IA integrada (frontend y/o backend que llama a Gemini). Contá en unos minutos el flujo, qué hace la IA y qué mejorarías. Feedback del grupo o del profesor y anotá 1–2 próximos pasos para iterar.</p>
+        </div>
       ) : (
         <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
           <p>
@@ -163,7 +654,7 @@ const tools = lesson.tools;
     </section>
 
     <section class="mt-10">
-      <h2 class="text-xl font-semibold">Recursos <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}>(curados)</span></h2>
+      <h2 class="text-xl font-semibold">Recursos <span class="italic" style={{ fontFamily: 'Playfair Display, serif', color: 'var(--champagne)' }}></span></h2>
       <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
         <li>
           Google Developers: <a class="text-[color:var(--champagne)]" href="https://developers.google.com/" target="_blank" rel="noreferrer">developers.google.com</a>
@@ -176,7 +667,7 @@ const tools = lesson.tools;
         </li>
       </ul>
       <p class="mt-3 text-xs text-white/55" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-        Nota: en clases 8–16 vamos a meter Stitch/Labs/IA con ejemplos concretos.
+        Nota: Obligatorio 1 entrega de primer MVP. Obligatorio 2 entrega del producto final.
       </p>
     </section>
 
@@ -187,8 +678,8 @@ const tools = lesson.tools;
 
     <div class="mt-12 h-px bg-white/10" />
 
-    <p class="mt-6 text-sm text-white/60">
+    <!-- <p class="mt-6 text-sm text-white/60">
       Si querés que esto sea más práctico, podemos agregar para cada clase: video corto, checklist, y ejemplos de prompts.
-    </p>
+    </p> -->
   </article>
 </Layout>
