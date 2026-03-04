@@ -41,6 +41,74 @@ const tools = lesson.tools;
       </ol>
     </section>
 
+    {lesson.n === 1 && (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold">Lo que tenés que entender HOY (sin humo)</h2>
+
+        <div class="mt-3 grid gap-4">
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">1) ¿Qué es un LLM?</h3>
+            <p class="mt-2 text-white/75">
+              Un <strong>LLM</strong> (Large Language Model) es un modelo que predice el “próximo token”.
+              No es una “mente” ni una “base de datos de verdad”: es un sistema de probabilidad entrenado
+              con muchísimo texto.
+            </p>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li><strong>Sirve para:</strong> redactar, resumir, clasificar, extraer info, generar borradores, asistir decisiones.</li>
+              <li><strong>No sirve para:</strong> verdad garantizada, datos sensibles sin controles, ni decisiones críticas sin verificación.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">2) Tokens: qué son y por qué importan</h3>
+            <p class="mt-2 text-white/75">
+              Los modelos no ven “palabras”: ven <strong>tokens</strong> (pedazos de texto). Se cobran por tokens
+              de <strong>entrada</strong> (lo que vos mandás) y de <strong>salida</strong> (lo que el modelo genera).
+            </p>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>OpenAI explica tokens y conteo: <a class="text-[color:var(--champagne)]" href="https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them" target="_blank" rel="noreferrer">help.openai.com</a></li>
+              <li>Tokenizer (para ver tokens de tu texto): <a class="text-[color:var(--champagne)]" href="https://platform.openai.com/tokenizer" target="_blank" rel="noreferrer">platform.openai.com/tokenizer</a></li>
+            </ul>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">3) Cómo se cobra (muy simple)</h3>
+            <p class="mt-2 text-white/75">
+              Casi todos los providers cobran <strong>por uso</strong>. Regla práctica: la salida suele costar más que la entrada.
+              Si tu app manda mucho contexto o genera respuestas largas, pagás más.
+            </p>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li>OpenAI pricing: <a class="text-[color:var(--champagne)]" href="https://openai.com/api/pricing/" target="_blank" rel="noreferrer">openai.com/api/pricing</a></li>
+              <li>Gemini billing: <a class="text-[color:var(--champagne)]" href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noreferrer">ai.google.dev</a></li>
+              <li>Claude API docs/pricing: <a class="text-[color:var(--champagne)]" href="https://platform.claude.com/docs/en/api/overview" target="_blank" rel="noreferrer">platform.claude.com</a> · <a class="text-[color:var(--champagne)]" href="https://claude.com/pricing" target="_blank" rel="noreferrer">claude.com/pricing</a></li>
+            </ul>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">4) Ejemplos reales (para calibrar el objetivo)</h3>
+            <p class="mt-2 text-white/75">Productos con IA integrada (no solo “hechos con IA”):</p>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li><strong>Notion AI</strong> (escritura/sumarios dentro del producto): <a class="text-[color:var(--champagne)]" href="https://www.notion.so/product/ai" target="_blank" rel="noreferrer">notion.so/product/ai</a></li>
+              <li><strong>Grammarly</strong> (asistente de escritura): <a class="text-[color:var(--champagne)]" href="https://www.grammarly.com/" target="_blank" rel="noreferrer">grammarly.com</a></li>
+              <li><strong>Duolingo Max</strong> (features IA en aprendizaje): <a class="text-[color:var(--champagne)]" href="https://blog.duolingo.com/duolingo-max/" target="_blank" rel="noreferrer">blog.duolingo.com</a></li>
+            </ul>
+            <p class="mt-4 text-white/75">Herramientas de “vibecoding” / construcción rápida con IA:</p>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-white/75">
+              <li><strong>v0</strong> (UI por prompt): <a class="text-[color:var(--champagne)]" href="https://v0.dev/" target="_blank" rel="noreferrer">v0.dev</a></li>
+              <li><strong>Bolt.new</strong> (builder en browser): <a class="text-[color:var(--champagne)]" href="https://bolt.new/" target="_blank" rel="noreferrer">bolt.new</a></li>
+              <li><strong>Replit Agent</strong> (agente que construye apps): <a class="text-[color:var(--champagne)]" href="https://replit.com/products/agent" target="_blank" rel="noreferrer">replit.com/products/agent</a></li>
+              <li><strong>Google Labs</strong> (experimentos): <a class="text-[color:var(--champagne)]" href="https://labs.google/" target="_blank" rel="noreferrer">labs.google</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-[2rem] border border-white/10 bg-[#0D0D12]/35 p-5 text-white/75">
+          <strong>Mini-meta de esta clase:</strong> que entiendas el mapa mental (LLM → tokens → costo → UX → producto)
+          antes de escribir una línea.
+        </div>
+      </section>
+    )}
+
     <section class="mt-10">
       <h2 class="text-xl font-semibold">Ejercicio</h2>
       <div class="mt-3 rounded-[2rem] border border-white/10 bg-white/5 p-5 text-white/75">
