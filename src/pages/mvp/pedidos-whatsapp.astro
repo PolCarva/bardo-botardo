@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Pedidos por WhatsApp — Bardo">
+  <main class="wrap">
+    <h1>Pedidos por WhatsApp</h1>
+    <p class="sub">Piloto para rotiserías/casas de comida (UY/AR): catálogo + pedido guiado + cobro + estados.</p>
+
+    <div class="grid">
+      <div class="card"><h3>Catálogo</h3><p>Menú simple con precios y extras.</p></div>
+      <div class="card"><h3>Pedido guiado</h3><p>Dirección, horario, notas, extras sin ida y vuelta.</p></div>
+      <div class="card"><h3>Cobro</h3><p>Link de pago / transferencia + confirmación.</p></div>
+      <div class="card"><h3>Estados</h3><p>pendiente → pagado → en preparación → listo.</p></div>
+    </div>
+
+    <div class="cta">
+      <a class="primary" href="https://x.com/bardo_botardo" target="_blank" rel="noreferrer">Quiero el piloto (DM)</a>
+      <a class="secondary" href="/">Volver</a>
+    </div>
+
+    <p class="mini">Nota: esto es v0. La validación es 10 conversaciones + 1 piloto real.</p>
+  </main>
+
+  <style>
+    .wrap{max-width:860px;margin:0 auto;padding:56px 18px}
+    .sub{opacity:.8;margin-top:6px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+    .card{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px;background:rgba(255,255,255,.06)}
+    .card h3{margin:0 0 6px}
+    .card p{margin:0;opacity:.85}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    a.primary,a.secondary{color:#fff;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.16);padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.08)}
+    a.primary{border-color:rgba(124,247,197,.55);background:rgba(124,247,197,.12)}
+    .mini{opacity:.7;font-size:13px;margin-top:16px}
+  </style>
+</Layout>
