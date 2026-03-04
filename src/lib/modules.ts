@@ -10,13 +10,13 @@ export const modules: Module[] = [
     id: 'm1',
     title: 'Fundamentos: producto + IA sin humo',
     subtitle: 'Entender qué construir, para quién, y qué hace (y no hace) la IA.',
-    lessons: [1, 2],
+    lessons: [1],
   },
   {
     id: 'm2',
-    title: 'Diseñar el MVP (antes de codear)',
-    subtitle: 'Flujo, UX, scope, branding e identidad coherente.',
-    lessons: [3, 4],
+    title: 'Exploración del flujo + herramientas (toolstack)',
+    subtitle: 'Playgrounds y herramientas para velocidad: Mixboard, Stitch, v0 y Opal. Después definimos flujo + UX + branding.',
+    lessons: [2, 3, 4],
   },
   {
     id: 'm3',

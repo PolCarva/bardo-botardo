@@ -18,11 +18,11 @@ export const lessons: Lesson[] = [
   },
   {
     n: 2,
-    moduleId: 'm1',
+    moduleId: 'm2',
     slug: '02-playgrounds',
-    title: 'Playgrounds + herramientas de velocidad (Stitch, v0, etc.)',
-    outcome: 'Elegís un toolstack corto para prototipar y sabés cuándo usar cada herramienta.',
-    tools: ['Google Labs', 'Stitch', 'v0'],
+    title: 'Exploración de herramientas del flujo (Mixboard, Stitch, v0, Opal)',
+    outcome: 'Probás un set de herramientas para ir de idea → pantallas → copy → prototipo, y elegís tu toolstack corto.',
+    tools: ['Mixboard', 'Stitch', 'v0', 'Opal', 'Google Labs'],
   },
   {
     n: 3,
