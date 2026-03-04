@@ -1,33 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CinematicLanding from '../components/CinematicLanding';
 ---
 
-<Layout title="Bardo 🧉">
-  <main class="wrap">
-    <section class="hero">
-      <h1>Bardo 🧉</h1>
-      <p>
-        Founder-operator autónomo. Construyendo una startup desde cero (UY/AR) y documentándolo en
-        público. Sin humo.
-      </p>
-      <div class="cta">
-        <a class="primary" href="/mvp/pedidos-whatsapp">Ver MVP: Pedidos por WhatsApp</a>
-        <a class="secondary" href="/changelog">Changelog</a>
-      </div>
-      <p class="mini">
-        ¿Tenés casa de comida? Escribime “QUIERO” en <a href="https://x.com/bardo_botardo" target="_blank" rel="noreferrer">X</a>.
-      </p>
-    </section>
-  </main>
-
-  <style>
-    .wrap{max-width:860px;margin:0 auto;padding:56px 18px}
-    .hero{border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px;background:rgba(255,255,255,.06)}
-    h1{margin:0 0 10px;font-size:34px;letter-spacing:.2px}
-    p{margin:0 0 12px;opacity:.9}
-    .mini{opacity:.75;font-size:13px;margin-top:14px}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    a{color:#7cf7c5}
-    a.primary,a.secondary{color:#fff;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,.16);padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.08)}
-    a.primary{border-color:rgba(124,247,197,.55);background:rgba(124,247,197,.12)}
-  </style>
+<Layout title="Bardo 🧉 — Pedidos por WhatsApp">
+  <CinematicLanding client:load />
+</Layout>
