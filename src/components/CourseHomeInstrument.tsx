@@ -349,6 +349,19 @@ export default function CourseHomeInstrument() {
               <div className="mt-4 flex-1 min-h-0"><CursorProtocolScheduler /></div>
             </div>
           </div>
+
+          <div data-reveal className="mt-6 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
+            <div className="flex items-center justify-between px-5 pt-5">
+              <div>
+                <div className="text-sm font-semibold">Demo (video)</div>
+                <p className="mt-1 text-sm text-white/65">12 segundos — UI tour (isla + micro‑UI + manifiesto).</p>
+              </div>
+              <div className="text-xs text-white/60" style={{ fontFamily: 'JetBrains Mono, monospace' }}>demo.mp4</div>
+            </div>
+            <div className="px-5 pb-5 pt-4">
+              <video src="/demo.mp4" className="w-full rounded-[1.4rem] border border-white/10" muted playsInline loop autoPlay controls />
+            </div>
+          </div>
         </div>
       </div>
 
